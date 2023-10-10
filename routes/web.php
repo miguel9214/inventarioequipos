@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\DependenciesController;
+use App\Http\Controllers\ComputersController;
+use App\Models\Computers;
+use App\Models\Dependencies;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::resource('dependecies',DependenciesController::class);
+    Route::resource('computers',DependenciesController::class);
+    Route::get('graphic',[Computers::class,'ComputersByDependecies'])->name('graphic');
+    Route::get('reports',[Computers::class,'reports'])->name('reports');
 });
 
 require __DIR__.'/auth.php';
