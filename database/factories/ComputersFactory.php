@@ -30,7 +30,7 @@ class ComputersFactory extends Factory
             'anydesk'=>$this->faker->imei(), 
             'printer'=>$this->faker->name(), 
             'scanner'=>$this->faker->name(),
-            'dependecies_id'=>$this->faker->numberBetween(1,6),
+            'dependencies_id'=>$this->faker->numberBetween(1,6),
         ];
     }
 }
