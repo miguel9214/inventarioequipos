@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('printer', 100);
             $table->string('scanner', 100);
             // De esta forma creo una relacion con otra tabla la cual dependera el campo creado en una tabla hija
-            $table->foreignId('dependecies_id')->constrained('dependecies')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('dependencies_id')->constrained('dependencies')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

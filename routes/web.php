@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('dependecies',DependenciesController::class);
     Route::resource('computers',DependenciesController::class);
-    Route::get('graphic',[Computers::class,'ComputersByDependecies'])->name('graphic');
+    Route::get('graphic',[Computers::class,'ComputersByDependencies'])->name('graphic');
     Route::get('reports',[Computers::class,'reports'])->name('reports');
 });
 

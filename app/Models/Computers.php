@@ -23,6 +23,6 @@ class Computers extends Model
         'anydesk', 
         'printer', 
         'scanner',
-        'dependecies_id' 
+        'dependencies_id' 
     ];
 }

@@ -15,7 +15,7 @@ class DependenciesController extends Controller
     {
         $dependencies = Dependencies::all();
 
-        return Inertia::render('Dependecies/Index',['dependecies'=>$dependencies]);
+        return Inertia::render('Dependencies/Index',['dependencies'=>$dependencies]);
     }
 
     /**
@@ -23,7 +23,7 @@ class DependenciesController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Dependecies/Create');
+        return Inertia::render('Dependencies/Create');
     }
 
     /**
@@ -34,7 +34,7 @@ class DependenciesController extends Controller
         $request ->validate(['name'=> 'required|max:100']);
         $dependencies = new Dependencies($request->input());
         $dependencies->save();
-        return redirect('dependecies');
+        return redirect('dependencies');
     }
 
     /**
@@ -50,7 +50,7 @@ class DependenciesController extends Controller
      */
     public function edit(Dependencies $dependencies)
     {
-        return Inertia::render('Dependecies/Edit');
+        return Inertia::render('Dependencies/Edit',['dependencies'=>$dependencies]);
     }
 
     /**
@@ -58,7 +58,9 @@ class DependenciesController extends Controller
      */
     public function update(Request $request, Dependencies $dependencies)
     {
-        //
+        $request ->validate(['name'=> 'required|max:100']);
+        $dependencies->update($request->all());
+        return redirect('dependencies');
     }
 
     /**
@@ -66,6 +68,7 @@ class DependenciesController extends Controller
      */
     public function destroy(Dependencies $dependencies)
     {
-        //
+        $dependencies->delete();
+        return redirect('dependencies');
     }
 }
