@@ -39,8 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::resource('dependecies',DependenciesController::class);
-    Route::resource('computers',DependenciesController::class);
+    Route::resource('dependencies',DependenciesController::class);
+    Route::resource('computers',ComputersController::class);
     Route::get('graphic',[Computers::class,'ComputersByDependencies'])->name('graphic');
     Route::get('reports',[Computers::class,'reports'])->name('reports');
 });
