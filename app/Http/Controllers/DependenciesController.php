@@ -31,7 +31,7 @@ class DependenciesController extends Controller
      */
     public function store(Request $request)
     {
-        $request ->validate(['name'=> 'required|max:100']);
+        $request ->validate(['name'=> 'required|max:100|unique:'.Dependencies::class]);
         $dependencies = new Dependencies($request->input());
         $dependencies->save();
         return redirect('dependencies');
@@ -58,7 +58,7 @@ class DependenciesController extends Controller
      */
     public function update(Request $request, Dependencies $dependencies)
     {
-        $request ->validate(['name'=> 'required|max:100']);
+        $request ->validate(['name'=> 'required|max:100|unique:'.Dependencies::class]);
         $dependencies->update($request->all());
         return redirect('dependencies');
     }

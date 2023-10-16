@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('cpu', 100);
             $table->string('storage', 100);
             $table->string('ram', 100);
-            $table->string('ip', 100);
+            $table->string('ip', 100)->unique();
             $table->string('mac', 100);
             $table->string('serial', 100);
             $table->string('fixed_asset', 100);

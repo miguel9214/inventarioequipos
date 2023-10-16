@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Computers>
@@ -23,7 +24,7 @@ class ComputersFactory extends Factory
             'cpu'=>$this->faker->macProcessor(), 
             'storage'=>$this->faker->phoneNumber(), 
             'ram'=>$this->faker->phoneNumber(), 
-            'ip'=>$this->faker->localIpv4(), 
+            'ip'=>$this->faker->unique()->localIpv4(), 
             'mac'=>$this->faker->macAddress(), 
             'serial'=>$this->faker->imei(), 
             'fixed_asset'=>$this->faker->imei(), 
