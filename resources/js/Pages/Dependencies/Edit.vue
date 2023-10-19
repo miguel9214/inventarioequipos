@@ -1,22 +1,47 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { Head, useForm } from '@inertiajs/vue3';
+
+const props = defineProps({
+    // Con esto llamo los datos que vienen del contralador
+    dependencies: { type: Object }
+});
+const form = useForm({
+    name:props.dependencies.name
+})
 </script>
 
 <template>
-    <Head title="Dashboard" />
-
+    <Head title="Crear dependencia" />
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">Inicio</h2>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">Editar dependencias</h2>
         </template>
+
 
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+                <div class="p-4 overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                    <form @submit.prevent="$event => form.patch(route('dependencies.update',{dependencies:props.dependencies.id}))"
+                        class="max-w-xl mt-6 space-y-6">
+                        <InputLabel for="name" value="Dependencia"></InputLabel>
+                        <TextInput id="name" v-model="form.name" autofocus required type="text" class="block w-full mt-1">
+                        </TextInput>
+                        <InputError :message="form.errors.name" class="mt-2">
+                        </InputError>
+                        <PrimaryButton :disabled="form.processing">
+                            <i class="fa-solid fa-save"></i>Guardar
+                        </PrimaryButton>
+                    </form>
+
                 </div>
             </div>
         </div>
+
     </AuthenticatedLayout>
+
 </template>
